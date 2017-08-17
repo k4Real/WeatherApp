@@ -133,7 +133,7 @@ function toHTML (pCity,pCountry, pTemperature,pDescriptionWeather) {
  $(".temperature").html(pTemperature+"&#8451;");
  $("#location").html(pCity+","+pCountry);
  $(".weatherIcon").html("<p>"+ pDescriptionWeather  +"</p>") ;
-    
+  setBackground(pDescriptionWeather);
 }
 
 
@@ -141,42 +141,42 @@ function setBackground (pWeather){
     
     switch(pWeather) {
     case "clear sky":
-        code block
+        $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
     case "few clouds":
-        code block
+         $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
     
     case "scattered clouds":
-        code block
+         $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
     case "broken clouds":
-        code block
+         $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
     case "few clouds":
-        code block
+         $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
      case "shower rain":
-        code block
+       $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
      case "rain":
-        code block
+      $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
     case "thunderstorm":
-        code block
+          $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
      case "snow":
-        code block
+       $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
      case "mist":
-        code block
+        $("body").css("background-image","url('../img/clearsky.jpg')") ;
         break;
         
         
