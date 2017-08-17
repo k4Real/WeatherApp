@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 13, 2017, 8:36:33 PM
+    Author     : K4RELS
+*/
+
+*{
+    
+  font-family: 'Cormorant Garamond', serif;
+    
+}
+
+/*Background image*/
+
+body {
+    
+    background-image: url("../img/snow.jpg") ;
+    background-repeat: no-repeat ;
+    background-position: left top; 
+    background-size: cover ;
+    
+}
+/****************************************/
+
+
+
+
+
+.whiteB {
+    
+    background-color: white;
+    
+}
+
+
+
+h1 {
+   
+    text-align: center ;
+    margin-bottom: 10px;
+    
+}

@@ -1,0 +1,172 @@
+-<!DOCTYPE html>
+<!--
+TO Do, : media queries, small screensizes,
+Javascript fadein with languages used,
+Responsive, Ajax, Bootstraps jQuery
+use disabled o
+-->
+<html>
+    <head>
+<!--        favicon image in front of header, picture needs to be formatted first to icon-->
+        <link rel="icon" href="http://example.com/favicon.png">
+        <title> Weather Application</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+         <link href="CSS/myStyles.css" rel="stylesheet">
+    
+    </head>
+    <body>
+       
+<div class="container whiteB ">
+            
+ <h1>Weather App</h1>
+ 
+ <div class="row">
+     
+     <div class="col-md-6">
+     
+     <form>
+         <input type="text" class="searchField" placeholder="Enter a location">
+         <input type="button" class="searchButton" value="Search">
+         
+         
+     </form>
+     </div>
+     
+      <div class="col-md-6">
+     
+     <form>
+        
+         <input type="button" class="gpsButton" value="Current Location">
+         
+         
+     </form>
+     </div>
+     
+     
+     
+ </div>
+ 
+ 
+<!-- Weather of today-->
+ 
+  <div class="row">   
+                
+       <div class="col-md-6">
+
+            <p class="temperature">temperature</p>
+
+            <p id="location">location</p>
+    
+ 
+ </div>
+        <div class="col-md-6 weatherIcon">
+                    
+                    
+          
+                    
+                    
+       
+                </div>            
+  </div>
+<!--   Weather of today             -->
+                
+      
+<!--   row for next week forecast-->
+<div class="row">
+
+    <div class="col-md-4">
+        
+       <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+       </div>
+    </div>
+
+ <div class="col-md-4">
+     
+     <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+       </div>
+    </div>
+
+      <div class="col-md-4">
+          
+          <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+       </div>
+    </div>           
+            
+  
+</div>  
+
+<!--  2nd row for next week forecast-->
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+       </div>
+    </div>
+
+ <div class="col-md-4">
+     <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+       </div>
+    </div>
+
+      <div class="col-md-4">
+          <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+       </div>
+    </div>           
+            
+  
+</div>  
+  
+  
+    
+<footer>API is from <a href="https://openweathermap.org/">Openweathermap</a></footer>
+    
+    <script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  
+<script src="js/weather.js"></script>
+    
+    </body>
+</html>
