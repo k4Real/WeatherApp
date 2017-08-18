@@ -38,6 +38,17 @@
 
 
 var temperature ;
+var weatherTypes =[
+    "rain",
+    "sun",
+    "clouds",
+    "clear sky",
+    "thunderstorm",
+    "snow",
+    "mist"
+     
+];
+
 var tempUnit ;
 var weatherObject = {};
 var latitude;
@@ -139,7 +150,22 @@ function toHTML (pCity,pCountry, pTemperature,pDescriptionWeather) {
 
 function setBackground (pWeather){
     
-    switch(pWeather) {
+    var tempWeather;
+    
+    for (i=0; i<weatherTypes.length;i++){
+        
+  if(pWeather.indexOf(weatherTypes[0])!== -1){
+      tempWeather= weatherTypes[0];
+      break;
+  }
+    
+    }
+    
+    
+    
+    
+    
+    switch(tempWeather) {
     case "clear sky":
         $("body").css("background-image","url('img/clearsky.jpg')") ;
         break;
@@ -155,7 +181,7 @@ function setBackground (pWeather){
          $("body").css("background-image","url('img/cloudy.jpg')") ;
         break;
         
-    case "few clouds":
+    case "clouds":
          $("body").css("background-image","url('img/cloudy.jpg')") ;
         break;
         
@@ -176,7 +202,7 @@ function setBackground (pWeather){
         break;
         
      case "mist":
-        $("body").css("background-image","url('img/mist.jpg')") ;
+        $("body").css("background-image","url('img/.jpg')") ;
         break;
         
         
@@ -244,4 +270,10 @@ setTimeout(function(){
 
 }, 500);  
     
+});
+
+
+$('.searchButton').click(function(){
+    
+  var tempCity =  $('.searchField').attr("value") ;
 });
