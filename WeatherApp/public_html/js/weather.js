@@ -141,42 +141,42 @@ function setBackground (pWeather){
     
     switch(pWeather) {
     case "clear sky":
-        $("body").css("background-image","url('../img/clearsky.jpg')") ;
+        $("body").css("background-image","url('img/clearsky.jpg')") ;
         break;
     case "few clouds":
-         $("body").css("background-image","url('../img/clearsky.jpg')") ;
+         $("body").css("background-image","url('img/cloudy.jpg')") ;
         break;
     
     case "scattered clouds":
-         $("body").css("background-image","url('../img/clearsky.jpg')") ;
+         $("body").css("background-image","url('img/cloudy.jpg')") ;
         break;
         
     case "broken clouds":
-         $("body").css("background-image","url('../img/clearsky.jpg')") ;
+         $("body").css("background-image","url('img/cloudy.jpg')") ;
         break;
         
     case "few clouds":
-         $("body").css("background-image","url('../img/clearsky.jpg')") ;
+         $("body").css("background-image","url('img/cloudy.jpg')") ;
         break;
         
      case "shower rain":
-       $("body").css("background-image","url('../img/clearsky.jpg')") ;
+       $("body").css("background-image","url('img/rain.jpg')") ;
         break;
         
      case "rain":
-      $("body").css("background-image","url('../img/clearsky.jpg')") ;
+      $("body").css("background-image","url('img/rain.jpg')") ;
         break;
         
     case "thunderstorm":
-          $("body").css("background-image","url('../img/clearsky.jpg')") ;
+          $("body").css("background-image","url('img/thunderstorm.jpg')") ;
         break;
         
      case "snow":
-       $("body").css("background-image","url('../img/clearsky.jpg')") ;
+       $("body").css("background-image","url('img/snowy.jpg')") ;
         break;
         
      case "mist":
-        $("body").css("background-image","url('../img/clearsky.jpg')") ;
+        $("body").css("background-image","url('img/mist.jpg')") ;
         break;
         
         
