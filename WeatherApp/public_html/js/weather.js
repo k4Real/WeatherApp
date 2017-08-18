@@ -24,6 +24,7 @@
  * Extract the relevant data
  *  Add button which changes onclick from fahrenheit to celsius  
  *  An If /switch statesment  for weather Icons
+ *  add error pictures
  * 
  * Learned
  * soundeffect depending on weathe
@@ -45,13 +46,16 @@ var weatherTypes =[
     "clear sky",
     "thunderstorm",
     "snow",
-    "mist"
+    "mist",
+    "haze"
      
 ];
 
 var tempUnit ;
 var weatherObject = {};
+var weatherAPI ;
 var latitude;
+var tempWeather ;
 var longitude;
 var country ;
 var city;
@@ -70,17 +74,17 @@ var apiKey = "29060e84e03e5fd17b47c3dae047ddf7";
      //extract local coords
      latitude=response.coords.latitude;
      longitude=response.coords.longitude;
-    
+     weatherAPI = "http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&APPID="+apiKey+"&units=metric";
  };
 
 
 
 
-function getCurrentWeather (pLongitude,pLatitude) {
+function getCurrentWeather () {
     
    
     
-   var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?lat="+pLatitude+"&lon="+pLongitude+"&APPID="+apiKey+"&units=metric";
+
     
    $.ajax({
   method: "GET",
@@ -147,16 +151,16 @@ function toHTML (pCity,pCountry, pTemperature,pDescriptionWeather) {
   setBackground(pDescriptionWeather);
 }
 
-
+// search weather description  for specific keyword and set relevant background
 function setBackground (pWeather){
     
-    var tempWeather;
+    tempWeather="" ;
     
     for (i=0; i<weatherTypes.length;i++){
         
-  if(pWeather.indexOf(weatherTypes[0])!== -1){
-      tempWeather= weatherTypes[0];
-      break;
+  if(pWeather.indexOf(weatherTypes[i])!== -1){
+      tempWeather= weatherTypes[i];
+     
   }
     
     }
@@ -202,9 +206,16 @@ function setBackground (pWeather){
         break;
         
      case "mist":
-        $("body").css("background-image","url('img/.jpg')") ;
+        $("body").css("background-image","url('img/mist.jpg')") ;
         break;
         
+       case "haze":
+        $("body").css("background-image","url('img/mist.jpg')") ;
+        break;
+        
+        default:
+             $("body").css("background-image","url('img/mist.jpg')") ;
+        break;
         
 }
     
@@ -237,7 +248,7 @@ function error (){
 navigator.geolocation.getCurrentPosition(setLocation, error);
 
 setTimeout(function(){
- getCurrentWeather(longitude, latitude);
+ getCurrentWeather();
 
 }, 500);
 
@@ -266,7 +277,7 @@ $('.gpsButton').click(function(){
  navigator.geolocation.getCurrentPosition(setLocation, error);
 
 setTimeout(function(){
- getCurrentWeather(longitude, latitude);
+ getCurrentWeather();
 
 }, 500);  
     
@@ -275,5 +286,14 @@ setTimeout(function(){
 
 $('.searchButton').click(function(){
     
-  var tempCity =  $('.searchField').attr("value") ;
+  var tempCity =  $(".searchField").attr("value") ;
+  tempCity = document.getElementById("searchTxt").value;
+  
+  weatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="+tempCity+"&APPID="+apiKey+"&units=metric";
+  
+  // using timeout fucntion to give ajax request time to be completed
+  setTimeout(function(){
+ getCurrentWeather();
+
+}, 500);
 });
