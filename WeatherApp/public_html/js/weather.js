@@ -52,6 +52,8 @@ var weatherTypes =[
 ];
 
 var tempUnit ;
+var windSpeed;
+var date;
 var weatherObject = {};
 var weatherAPI ;
 var latitude;
@@ -94,36 +96,42 @@ function getCurrentWeather () {
       
      city= response.name ;
      country=response.sys.country ;
+     date =  getCurrentDate()  ;
+     windSpeed =response.wind.speed ;
      temperature = parseInt(response.main.temp*10)/10; 
      tempUnit="Celsius";
      descriptionWeather= response.weather[0].description ;
-     toHTML(city,country,temperature,descriptionWeather) ;
+     toHTML(city,country,temperature,descriptionWeather,windSpeed) ;
   }
 });
     
     
 }
 
-function getWeatherNextWeek (pLongitude,pLatitude) {
+function getCurrentDate (){
     
-   
     
-   var weatherAPI = "http://api.openweathermap.org/data/2.5/forecast?"+pLatitude+"&lon="+pLongitude+"&APPID="+apiKey+"&units=metric";
+    var today = new Date();
+var dd = today.getDate();
+var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+var mm =  monthNames[today.getMonth()]; //January is 0!
+
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd = '0'+dd
+} 
+
+ 
+
+return  dd+ '. ' +mm  + ' ' + yyyy;
     
-   $.ajax({
-  method: "GET",
-  url: weatherAPI,
-  dataType: "json",
-  success: function(response){
-      
-     city= response.name ;
-     country=response.sys.country ;
-     temperature = parseInt(response.main.temp*10)/10; 
-     tempUnit="Celsius";
-     descriptionWeather= response.weather[3] ;
-     toHTML(city,country,temperature, descriptionWeather) ;
-  }
-});
+    
+    
+    
+    
     
     
 }
@@ -141,14 +149,18 @@ function getWeatherNextWeek (pLongitude,pLatitude) {
 
 
 
-
-function toHTML (pCity,pCountry, pTemperature,pDescriptionWeather) {
+function toHTML (pCity,pCountry, pTemperature,pDescriptionWeather,pWind) {
     
  
  $(".temperature").html(pTemperature+"&#8451;");
- $("#location").html(pCity+","+pCountry);
+ $("#location").html(pCity+", "+pCountry);
  $(".weatherIcon").html("<p>"+ pDescriptionWeather  +"</p>") ;
+ $("#windSpeed").html(pWind+" m/h");
+ $("#currentDate").html("Date:" + getCurrentDate);
   setBackground(pDescriptionWeather);
+  
+  
+ 
 }
 
 // search weather description  for specific keyword and set relevant background
@@ -286,8 +298,8 @@ setTimeout(function(){
 
 $('.searchButton').click(function(){
     
-  var tempCity =  $(".searchField").attr("value") ;
-  tempCity = document.getElementById("searchTxt").value;
+   // need to do this to get the value of a text field
+   var tempCity = document.getElementById("searchTxt").value;
   
   weatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="+tempCity+"&APPID="+apiKey+"&units=metric";
   
