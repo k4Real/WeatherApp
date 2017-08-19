@@ -97,9 +97,9 @@ function getCurrentWeather () {
      city= response.name ;
      country=response.sys.country ;
      date =  getCurrentDate()  ;
-     windSpeed =response.wind.speed ;
+     windSpeed =parseInt(response.wind.speed *1.60934*10)/10 ;
      temperature = parseInt(response.main.temp*10)/10; 
-     tempUnit="Celsius";
+     tempUnit="Metric";
      descriptionWeather= response.weather[0].description ;
      toHTML(city,country,temperature,descriptionWeather,windSpeed) ;
   }
@@ -120,9 +120,6 @@ var mm =  monthNames[today.getMonth()]; //January is 0!
 
 var yyyy = today.getFullYear();
 
-if(dd<10) {
-    dd = '0'+dd
-} 
 
  
 
@@ -155,10 +152,10 @@ function toHTML (pCity,pCountry, pTemperature,pDescriptionWeather,pWind) {
  $(".temperature").html(pTemperature+"&#8451;");
  $("#location").html(pCity+", "+pCountry);
  $(".weatherIcon").html("<p>"+ pDescriptionWeather  +"</p>") ;
- $("#windSpeed").html(pWind+" m/h");
- $("#currentDate").html("Date:" + getCurrentDate);
+ $("#windSpeed").html(pWind+" km/h");
+ $("#currentDate").html("Date: " + getCurrentDate());
   setBackground(pDescriptionWeather);
-  
+
   
  
 }
@@ -184,9 +181,11 @@ function setBackground (pWeather){
     switch(tempWeather) {
     case "clear sky":
         $("body").css("background-image","url('img/clearsky.jpg')") ;
+        $(".weatherIcon").append("<img src='img/clearSky.svg'>") ;
         break;
     case "few clouds":
          $("body").css("background-image","url('img/cloudy.jpg')") ;
+       
         break;
     
     case "scattered clouds":
@@ -199,6 +198,7 @@ function setBackground (pWeather){
         
     case "clouds":
          $("body").css("background-image","url('img/cloudy.jpg')") ;
+         $(".weatherIcon").append("<img src='img/cloudyIcon.svg'>") ;
         break;
         
      case "shower rain":
@@ -207,26 +207,32 @@ function setBackground (pWeather){
         
      case "rain":
       $("body").css("background-image","url('img/rain.jpg')") ;
+         $(".weatherIcon").append("<img src='img/rainyIcon.svg'>") ;
         break;
         
     case "thunderstorm":
           $("body").css("background-image","url('img/thunderstorm.jpg')") ;
+             $(".weatherIcon").append("<img src='img/stormyIcon.svg'>") ;
         break;
         
      case "snow":
        $("body").css("background-image","url('img/snowy.jpg')") ;
+        $(".weatherIcon").append("<img src='img/snowIcon.svg'>") ;
         break;
         
      case "mist":
         $("body").css("background-image","url('img/mist.jpg')") ;
+           $(".weatherIcon").append("<img src='img/mistIcon.svg'>") ;
         break;
         
        case "haze":
         $("body").css("background-image","url('img/mist.jpg')") ;
+           $(".weatherIcon").append("<img src='img/mistIcon.svg'>") ;
         break;
         
         default:
              $("body").css("background-image","url('img/mist.jpg')") ;
+             
         break;
         
 }
@@ -264,20 +270,22 @@ setTimeout(function(){
 
 }, 500);
 
-
-$(".temperature").click(function(){
+//swicthes between Metric and Imperial
+$("#units").on("click",function(){
     
-    if(tempUnit==="Celsius"){
+    if(tempUnit==="Metric"){
         
-     $(".temperature").html(parseInt((temperature*1.8 + 32)*10)/10+"&#8457;");  
-        tempUnit="Fahrenheit";
+     $(".temperature").html(parseInt((temperature*1.8 + 32)*10)/10+"&#8457;"); 
+     $("#windSpeed").html(parseInt(windSpeed*0.621371*10)/10+" m/h");
+        tempUnit="Imperial";
         
     }
     
     else {
         
          $(".temperature").html(temperature+"&#8451;");
-        tempUnit="Celsius";
+         $("#windSpeed").html(windSpeed+" km/h");
+        tempUnit="Metric";
     }
     
 });
@@ -287,7 +295,7 @@ $(".temperature").click(function(){
 $('.gpsButton').click(function(){
     
  navigator.geolocation.getCurrentPosition(setLocation, error);
-
+ $(".weatherIcon").empty();
 setTimeout(function(){
  getCurrentWeather();
 
@@ -300,7 +308,7 @@ $('.searchButton').click(function(){
     
    // need to do this to get the value of a text field
    var tempCity = document.getElementById("searchTxt").value;
-  
+  $(".weatherIcon").empty();
   weatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="+tempCity+"&APPID="+apiKey+"&units=metric";
   
   // using timeout fucntion to give ajax request time to be completed
